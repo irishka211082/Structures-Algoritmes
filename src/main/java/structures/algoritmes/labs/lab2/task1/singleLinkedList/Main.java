@@ -89,16 +89,16 @@ public class Main {
             System.out.println("The element № " + i + " is " + singleLinkedList.get(i).getValue());
         }
 
-//        //ToDo: Fix NPE here
-//        System.out.println("\n7. Demonstrate the creating the list with common elements." +
-//                "\nWe'll compare our singleLinkedList and list2 from previous task." +
-//                "\nLet's create the result-list:");
-//        SingleLinkedList resultList = singleLinkedList.makeListWithCommon(singleLinkedList, list2);
-//        System.out.println("We got the result list with the size " + resultList.getSize());
-//        System.out.println("Lets print the hole result-list");
-//        for (int i = 0; i < resultList.getSize(); i++) {
-//            System.out.println("The element № " + i + " is " + resultList.get(i).getValue());
-//        }
+        //ToDo: Fix NPE here
+        System.out.println("\n7. Demonstrate the creating the list with common elements." +
+                "\nWe'll compare our singleLinkedList and list2 from previous task." +
+                "\nLet's create the result-list:");
+        SingleLinkedList resultList = singleLinkedList.makeListWithCommon(singleLinkedList, list2);
+        System.out.println("We got the result list with the size " + resultList.getSize());
+        System.out.println("Lets print the hole result-list");
+        for (int i = 0; i < resultList.getSize(); i++) {
+            System.out.println("The element № " + i + " is " + resultList.get(i).getValue());
+        }
 
         System.out.println("\n8. Demonstrate the sorting ASC of singleLinkedList:");
         System.out.println("Lets print our singleLinkedList:");

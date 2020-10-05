@@ -102,8 +102,9 @@ public class SingleLinkedList {
         list2.sortAscList();
         SingleLinkedList resultList = new SingleLinkedList();
 
-        for (int i = 0; i < list1.getSize(); i++) {
-            for (int j = 0; j < list2.getSize(); j++) {
+        int iteration = Math.min(list1.getSize(), list2.getSize());
+        for (int i = 0; i < iteration; i++) {
+            for (int j = 0; j < iteration; j++) {
                 if (list1.get(i).getValue() == list2.get(j).getValue()) {
                     Element addElement = list1.get(i);
                     addElement.setNext(null);

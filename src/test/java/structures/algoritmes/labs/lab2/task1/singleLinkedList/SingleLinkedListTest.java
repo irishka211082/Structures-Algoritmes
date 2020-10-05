@@ -343,8 +343,8 @@ class SingleLinkedListTest {
         singleLinkedList2.add(element3);
         singleLinkedList2.add(element4);
 
-//        List resultList = list1.makeListWithCommon(list1, list2);
-//        assertEquals(4, resultList.getSize());
+        SingleLinkedList resultList = singleLinkedList1.makeListWithCommon(singleLinkedList1, singleLinkedList2);
+        assertEquals(4, resultList.getSize());
 //ToDo: add one more assertions when will work correct
     }
 
