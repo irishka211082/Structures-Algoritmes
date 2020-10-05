@@ -96,7 +96,6 @@ public class SingleLinkedList {
         }
     }
 
-    //ToDo: Please, check where is the mistake??? NPE, when i=0, j=1
     SingleLinkedList makeListWithCommon(SingleLinkedList list1, SingleLinkedList list2) {
         list1.sortAscList();
         list2.sortAscList();
@@ -107,7 +106,6 @@ public class SingleLinkedList {
             for (int j = 0; j < iteration; j++) {
                 if (list1.get(i).getValue() == list2.get(j).getValue()) {
                     Element addElement = list1.get(i);
-                    addElement.setNext(null);
                     resultList.add(addElement);
                     break;
                 }
