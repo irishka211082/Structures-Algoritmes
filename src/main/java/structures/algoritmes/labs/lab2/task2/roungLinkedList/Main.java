@@ -39,7 +39,7 @@ public class Main {
         System.out.println("Now will see which student get which ticket-number");
         int studentStartPosition = -1;
         int ticketStartPosition = -1;
-        while (studentList.getSize() > k || ticketList.getSize() > n) {
+        while (studentList.getSize() >= k || ticketList.getSize() >= n) {
             if (((studentStartPosition + k) - studentList.getSize() - 1) > studentList.getSize() ||
                     ((ticketStartPosition + n) - ticketList.getSize() - 1) > ticketList.getSize()) {
                 break;
@@ -54,6 +54,14 @@ public class Main {
 
             studentStartPosition = studentStartPosition + k - 1;
             ticketStartPosition = ticketStartPosition + n - 1;
+
+            if (studentList.getSize() < studentStartPosition) {
+                studentStartPosition = studentList.getSize()-k;
+            }
+
+            if (ticketList.getSize() < ticketStartPosition) {
+                ticketStartPosition = ticketList.getSize()-n;
+            }
         }
 
         System.out.println("We have " + studentList.getSize() + " free students and " + ticketList.getSize() +
