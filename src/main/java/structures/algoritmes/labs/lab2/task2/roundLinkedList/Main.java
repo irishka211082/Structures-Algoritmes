@@ -1,4 +1,4 @@
-package structures.algoritmes.labs.lab2.task2.roungLinkedList;
+package structures.algoritmes.labs.lab2.task2.roundLinkedList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,17 +36,17 @@ public class Main {
             System.out.println("The element № " + i + " is " + ticketList.get(i).getTicket().getTicketNumber());
         }
 
-        System.out.println("Now will see which student get which ticket-number");
+        System.out.println("\nNow will see which student get which ticket-number");
         int studentStartPosition = -1;
         int ticketStartPosition = -1;
         while (studentList.getSize() >= k || ticketList.getSize() >= n) {
             if (studentStartPosition > (studentList.getSize() - 1)) {
-                studentStartPosition = studentStartPosition-studentList.getSize();
+                studentStartPosition = studentStartPosition - studentList.getSize() - 1;
             }
-            if (((studentStartPosition + k) - studentList.getSize() - 1) > studentList.getSize() ||
-                    ((ticketStartPosition + n) - ticketList.getSize() - 1) > ticketList.getSize()) {
-                break;
+            if (ticketStartPosition > (ticketList.getSize() - 1)) {
+                ticketStartPosition = ticketStartPosition - ticketList.getSize() - 1;
             }
+
             Student student = studentList.get(studentStartPosition, k).getStudent();
             ExamTicket ticket = ticketList.get(ticketStartPosition, n).getTicket();
 
@@ -54,6 +54,10 @@ public class Main {
 
             studentList.delete(studentStartPosition, k);
             ticketList.delete(ticketStartPosition, n);
+
+            if (studentList.getSize() < k || ticketList.getSize() < n) {
+                break;
+            }
 
             studentStartPosition = studentStartPosition + k - 1;
             ticketStartPosition = ticketStartPosition + n - 1;

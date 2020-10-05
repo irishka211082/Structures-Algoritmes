@@ -1,4 +1,4 @@
-package structures.algoritmes.labs.lab2.task2.roungLinkedList;
+package structures.algoritmes.labs.lab2.task2.roundLinkedList;
 
 public class ExamTicket extends RoundElement {
     private int ticketNumber;

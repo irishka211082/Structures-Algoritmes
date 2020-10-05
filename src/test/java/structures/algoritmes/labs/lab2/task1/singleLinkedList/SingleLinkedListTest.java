@@ -345,7 +345,6 @@ class SingleLinkedListTest {
 
         SingleLinkedList resultList = singleLinkedList1.makeListWithCommon(singleLinkedList1, singleLinkedList2);
         assertEquals(4, resultList.getSize());
-//ToDo: add one more assertions when will work correct
     }
 
     @Test
