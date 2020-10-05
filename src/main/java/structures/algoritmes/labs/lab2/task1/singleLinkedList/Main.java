@@ -89,7 +89,6 @@ public class Main {
             System.out.println("The element № " + i + " is " + singleLinkedList.get(i).getValue());
         }
 
-        //ToDo: Fix NPE here
         System.out.println("\n7. Demonstrate the creating the list with common elements." +
                 "\nWe'll compare our singleLinkedList and list2 from previous task." +
                 "\nLet's create the result-list:");

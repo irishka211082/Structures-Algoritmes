@@ -42,7 +42,7 @@ public class SingleLinkedList {
         } else throw new IllegalArgumentException();
     }
 
-    //ToDo: if need, add case, when can work with first and last element.Now works just with el-s in the middle
+    //if need, add case, when can work with first and last element.Now works just with el-s in the middle
     void addAfter(int n, Element element) {
         if (n > 0 && n < size - 1) {
             Element previous = get(n);
