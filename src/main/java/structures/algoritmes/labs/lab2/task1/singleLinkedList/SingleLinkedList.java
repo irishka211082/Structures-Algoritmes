@@ -2,7 +2,7 @@ package structures.algoritmes.labs.lab2.task1.singleLinkedList;
 
 public class SingleLinkedList {
 
-  Element first;
+    Element first;
     private int size = 0;
 
     void add(Element element) {
@@ -153,11 +153,21 @@ public class SingleLinkedList {
         addList(tempList);
     }
 
-// When move element №1 on 3 elements, put it after the 4th element
+    // When move element №1 on 3 elements, put it after the 4th element
     void moveRightOnNElements(int position, int n) {
         Element freeElement = get(position);
         delete(position);
         addAfter(position - 1 + n, freeElement);
+    }
+
+    void deleteEveryN(int n, int startPosition) {
+        int counter = 0;
+        int i = startPosition;
+        for ( ; i < size; ) {
+            delete(i);
+            ++counter;
+            i = i + n - 1;
+        }
     }
 
     public Element getFirst() {

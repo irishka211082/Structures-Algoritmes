@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 class SingleLinkedListTest {
 
     SingleLinkedList singleLinkedList;
@@ -345,5 +346,28 @@ class SingleLinkedListTest {
 //        List resultList = list1.makeListWithCommon(list1, list2);
 //        assertEquals(4, resultList.getSize());
 //ToDo: add one more assertions when will work correct
+    }
+
+    @Test
+    void deleteEveryN() {
+        Element el0 = new Element(0);
+        Element el1 = new Element(1);
+        Element el2 = new Element(2);
+        Element el3 = new Element(3);
+        Element el4 = new Element(4);
+        Element el5 = new Element(5);
+        Element el6 = new Element(6);
+
+        SingleLinkedList singleLinkedList1 = new SingleLinkedList();
+        singleLinkedList1.add(el0);
+        singleLinkedList1.add(el1);
+        singleLinkedList1.add(el2);
+        singleLinkedList1.add(el3);
+        singleLinkedList1.add(el4);
+        singleLinkedList1.add(el5);
+        singleLinkedList1.add(el6);
+
+        singleLinkedList1.deleteEveryN(2, 0);
+        System.out.println(singleLinkedList1.getSize());
     }
 }
