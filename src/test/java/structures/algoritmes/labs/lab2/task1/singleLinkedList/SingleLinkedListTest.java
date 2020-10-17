@@ -120,6 +120,22 @@ class SingleLinkedListTest {
     }
 
     @Test
+    void addAfter0() {
+        Element el0 = new Element(0);
+        Element el1 = new Element(1);
+        Element el2 = new Element(2);
+        Element el3 = new Element(3);
+
+        singleLinkedList.add(el0);
+        singleLinkedList.add(el1);
+        singleLinkedList.add(el2);
+        singleLinkedList.add(el3);
+
+        singleLinkedList.addAfter(0, new Element(100));
+        assertEquals(100, singleLinkedList.get(1).getValue());
+    }
+
+    @Test
     void addAfterNNotInTheMiddle() {
         Element el0 = new Element(0);
         Element el1 = new Element(1);
@@ -163,6 +179,20 @@ class SingleLinkedListTest {
         assertThrows(IllegalArgumentException.class, () -> {
             singleLinkedList.get(2);
         });
+
+        singleLinkedList.delete(0);
+        assertEquals(1, singleLinkedList.get(0).getValue());
+    }
+
+    @Test
+    void deleteLast() {
+        singleLinkedList.add(new Element(0));
+        singleLinkedList.add(new Element(1));
+        singleLinkedList.add(new Element(2));
+        singleLinkedList.add(new Element(3));
+
+        singleLinkedList.delete(3);
+        assertEquals(3, singleLinkedList.getSize());
     }
 
     @Test
@@ -345,6 +375,16 @@ class SingleLinkedListTest {
 
         SingleLinkedList resultList = singleLinkedList1.makeListWithCommon(singleLinkedList1, singleLinkedList2);
         assertEquals(4, resultList.getSize());
+    }
+
+    @Test
+    void test() {
+        SingleLinkedList list1 = SingleLinkedListGenerator.generate(10);
+        SingleLinkedList list2 = SingleLinkedListGenerator.generate(5);
+
+        list1.addList(list2);
+
+        list1.makeListWithCommon(list1, list2);
     }
 
     @Test

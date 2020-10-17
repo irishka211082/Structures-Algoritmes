@@ -39,10 +39,11 @@ public class RoundLinkedList {
                     first.setNext(null);
                 } else {
                     first = get(1);
+                    get(size - 1).setNext(first);
                 }
             } else if (position == size - 1) {
                 RoundElement previousElement = get(position - 1);
-                previousElement.setNext(null);
+                previousElement.setNext(first);
             } else {
                 RoundElement previousElement = get(position - 1);
                 previousElement.setNext(get(position + 1));
@@ -64,7 +65,7 @@ public class RoundLinkedList {
         if ((position) >= size) {
             position = (startPosition + step) - size;
         }
-       return get(position);
+        return get(position);
     }
 
     public int getSize() {

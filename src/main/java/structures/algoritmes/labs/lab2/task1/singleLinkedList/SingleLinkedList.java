@@ -21,12 +21,10 @@ public class SingleLinkedList {
     }
 
     void addFirst(Element element) {
-        if (size == 0) {
-            first = element;
-        } else {
+        if (size != 0) {
             element.setNext(first);
-            first = element;
         }
+        first = element;
         size++;
     }
 
@@ -44,7 +42,7 @@ public class SingleLinkedList {
 
     //if need, add case, when can work with first and last element.Now works just with el-s in the middle
     void addAfter(int n, Element element) {
-        if (n > 0 && n < size - 1) {
+        if (n >= 0 && n < size - 1) {
             Element previous = get(n);
             Element next = get(n + 1);
 
@@ -58,7 +56,7 @@ public class SingleLinkedList {
         if (position < size) {
             if (position == 0) {
                 if (size == 1) {
-                    first.setNext(null);
+                    first = null;
                 } else {
                     first = get(1);
                 }
@@ -94,6 +92,39 @@ public class SingleLinkedList {
         for (int i = 0; i < list2.getSize(); i++) {
             add(list2.get(i));
         }
+    }
+
+    SingleLinkedList makeListWithCommon1(SingleLinkedList list1, SingleLinkedList list2) {
+        SingleLinkedList bigger;
+        SingleLinkedList less;
+        if (list1.getSize() > list2.getSize()) {
+            bigger = list1.makeCopy();
+            less = list2.makeCopy();
+        } else {
+            less = list1.makeCopy();
+            bigger = list2.makeCopy();
+        }
+        less.sortAscList();
+        bigger.sortAscList();
+
+        SingleLinkedList resultList = new SingleLinkedList();
+
+        int iteration = Math.min(less.getSize(), bigger.getSize());
+        int counter = 0;
+        for (int i = 0; counter < iteration && i < less.getSize(); i++) {
+            for (int j = 0; j < bigger.getSize(); j++) {
+                if (less.get(i).getValue() == bigger.get(j).getValue()) {
+                    Element addElement = less.get(i);
+                    resultList.add(addElement);
+                    less.delete(i);
+                    bigger.delete(j);
+                    i--;
+                    break;
+                }
+            }
+            counter++;
+        }
+        return resultList;
     }
 
     SingleLinkedList makeListWithCommon(SingleLinkedList list1, SingleLinkedList list2) {
@@ -152,7 +183,6 @@ public class SingleLinkedList {
         addList(tempList);
     }
 
-    // When move element №1 on 3 elements, put it after the 4th element
     void moveRightOnNElements(int position, int n) {
         Element freeElement = get(position);
         delete(position);
@@ -160,11 +190,9 @@ public class SingleLinkedList {
     }
 
     void deleteEveryN(int n, int startPosition) {
-        int counter = 0;
-        int i = startPosition;
-        for ( ; i < size; ) {
+        int i = startPosition + n;
+        while (i < size) {
             delete(i);
-            ++counter;
             i = i + n - 1;
         }
     }

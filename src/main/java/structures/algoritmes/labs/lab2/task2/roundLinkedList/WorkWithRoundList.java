@@ -4,23 +4,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+public class WorkWithRoundList {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    RoundLinkedList studentList;
+    RoundLinkedList ticketList;
 
-        System.out.println("Let's create roundList of Students." +
-                "\nPlease, input number of students");
-        int studentNumber = Integer.parseInt(reader.readLine());
-        RoundLinkedList studentList = RoundListGenerator.generateStudents(studentNumber);
 
-        System.out.println("Let's create roundList of Tickets." +
-                "\nPlease, input number of tickets");
-        int ticketNumber = Integer.parseInt(reader.readLine());
-        RoundLinkedList ticketList = RoundListGenerator.generateTickets(ticketNumber);
+    public void run() throws IOException {
+        System.out.println("Let's work with roundLinkedList");
+        prepareStudentList();
+        prepareTicketList();
 
         System.out.println("Now we will say every K of students take every N of tickets." +
-                "\nInput K for students, but not more than " + studentNumber + "." +
-                "\nInput N for tickets, but not more than " + ticketNumber + ".");
+                "\nInput K for students, but not more than " + studentList.getSize() + "." +
+                "\nInput N for tickets, but not more than " + ticketList.getSize() + ".");
 
         int k = Integer.parseInt(reader.readLine());
         int n = Integer.parseInt(reader.readLine());
@@ -37,6 +34,28 @@ public class Main {
         }
 
         System.out.println("\nNow will see which student get which ticket-number");
+        chooseStudentsAndTickets(n, k);
+
+        System.out.println("We have " + studentList.getSize() + " free students and " + ticketList.getSize() +
+                " free tickets.");
+
+    }
+
+    void prepareStudentList() throws IOException {
+        System.out.println("Let's create roundList of Students." +
+                "\nPlease, input number of students");
+        int studentNumber = Integer.parseInt(reader.readLine());
+        studentList = RoundListGenerator.generateStudents(studentNumber);
+    }
+
+    void prepareTicketList() throws IOException {
+        System.out.println("Let's create roundList of Tickets." +
+                "\nPlease, input number of tickets");
+        int ticketNumber = Integer.parseInt(reader.readLine());
+        ticketList = RoundListGenerator.generateTickets(ticketNumber);
+    }
+
+    void chooseStudentsAndTickets(int n, int k) {
         int studentStartPosition = -1;
         int ticketStartPosition = -1;
         while (studentList.getSize() >= k || ticketList.getSize() >= n) {
@@ -63,7 +82,5 @@ public class Main {
             ticketStartPosition = ticketStartPosition + n - 1;
         }
 
-        System.out.println("We have " + studentList.getSize() + " free students and " + ticketList.getSize() +
-                " free tickets.");
     }
 }
